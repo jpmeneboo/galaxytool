@@ -1,0 +1,84 @@
+<tool id="signalp2" name="SignalP2" version="0.1.0">
+    <requirements>
+        <requirement type="package">signalp2</requirement>
+    </requirements>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command><![CDATA[
+        signalp2 
+	-t $organisme
+        -f $format
+	-m $method
+	-trunc $trunc  
+	$input_fasta > $output_fasta  
+    ]]></command>
+    <inputs>
+	<param type="data" name="input_fasta" format="fasta" label="Input fasta" />        
+	<param name='organisme' type="select" display="radio" label="Organisme">
+            <option value="euk" selected="true">Euckaryote</option>
+            <option value="gram-">Gram negatif</option>
+            <option value="gram+">Gram postif</option>
+	</param>
+
+	<param name='format' type="select" display="radio" label="Output format">
+            <option value="short" selected="true">short</option>
+            <option value="full">long</option>
+	    <option value="summary">summary</option>
+	</param>
+
+	<param name='method' type="select" display="radio" label="Methode">
+            <option value="nn" selected="true">neural networks</option>
+            <option value="hmm">hidden Markov models</option>
+            <option value="nn+hmm" selected="true">both</option>
+	</param>
+
+	<param name="trunc" type="integer" label="Truncate each sequence to max. Default: 70"  value="70" help="N-terminal truncation of input sequence (0 means no truncation).
+Default: Truncate sequence to a length of 70 aa">
+		<validator type="in_range" min="0" max="4000" message="N-terminal truncation of input sequence (0 means no truncation).
+Default: Truncate sequence to a length of 70 aa."/>
+	</param>
+
+
+    </inputs>
+    <outputs>
+          <data name="output_fasta" format="txt" />
+    </outputs>
+
+    <tests>
+        <test>
+            <param name="input_fasta" value="test.fasta"/>
+            <param name="organisme" value="gram+"/>
+            <param name="format" value="short"/>
+            <param name="trunc" value="70"/>
+            <param name="method" value="nn+hmm"/>
+            <output name="output" file="output_short.txt" />
+        </test>
+        <test>
+            <param name="input_fasta" value="test.fasta"/>
+            <param name="organisme" value="gram-"/>
+            <param name="format" value="full"/>
+            <param name="trunc" value="50"/>
+            <param name="method" value="nn"/>
+            <output name="output" file="output_long.txt" />
+        </test>
+        <test>
+            <param name="input_fasta" value="test.fasta"/>
+            <param name="organisme" value="euk"/>
+            <param name="format" value="summary"/>
+            <param name="trunc" value="100"/>
+            <param name="method" value="hmm"/>
+            <output name="output" file="output_summary.txt" />
+        </test>
+    </tests>
+
+
+    <help><![CDATA[
+**What it does**
+
+The SignalP V2.0 predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms: Gram-positive prokaryotes, Gram-negative prokaryotes, and eukaryotes. The method incorporates a prediction of cleavage sites and a signal peptide/non-signal peptide prediction based on a combination of several artificial neural networks and hidden Markov models.
+
+For more information, check the `user manual <http://www.cbs.dtu.dk/services/SignalP-2.0/>`_.
+
+    ]]></help>
+</tool>

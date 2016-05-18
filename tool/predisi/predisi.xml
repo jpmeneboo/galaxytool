@@ -1,0 +1,41 @@
+<tool id="PrediSi" name="PrediSi" version="0.1.0">
+    <description>Predicting signal peptide and cleavage positions</description>
+    <requirements>
+        <requirement type="package">predisi</requirement>
+    </requirements>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command><![CDATA[
+	java -classpath \${RDP_TOOLS_DIR}/JSPP $organisme $input_fasta $output_fasta
+
+    ]]></command>
+    <inputs>
+	<param type="data" name="input_fasta" format="fasta" label="Input fasta" />        
+	<param name='organisme' type="select" display="radio" label="Organisme">
+            <option value="\${RDP_TOOLS_DIR}/eukarya.smx" selected="true">Euckaryote</option>
+            <option value="\${RDP_TOOLS_DIR}/gramn.smx">Gram negatif</option>
+            <option value="\${RDP_TOOLS_DIR}/gramp.smx">Gram postif</option>
+	</param>
+    </inputs>
+    <outputs>
+          <data name="output_fasta" format="tabular" />
+    </outputs>
+
+    <tests>
+        <test>
+            <param name="input_fasta" value="test.fasta"/>
+            <param name="organisme" value="/home/jpmeneboo/tools/predisi/eukarya.smx"/>
+            <output name="output" file="output.tab" />
+        </test>
+    </tests>
+
+    <help><![CDATA[
+**What it does**
+
+PrediSi (PREDIction of SIgnal peptides) is a software tool for predicting signal peptide sequences and their cleavage positions in bacterial and eukaryotic proteins.
+
+For more information, check the `user manual <http://www.predisi.de/home.html>`_.
+    ]]></help>
+
+</tool>

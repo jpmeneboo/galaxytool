@@ -1,0 +1,13 @@
+************************* SignalP predictions *************************
+Using hidden Markov models (HMM) trained on eukaryotes
+
+----------------------------------------------------------------------
+>sp|P05067|A4_HUMAN Amyloid beta A4 protein OS=Homo sapiens GN=APP PE=1 SV=3
+
+SignalP-HMM result:
+>sp|P05067|A4_HUMAN
+Prediction: Signal peptide
+Signal peptide probability: 1.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.947 between pos. 17 and 18
+

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="JSSP" version="1">
+        <install version="1.0">
+            <actions>
+                <action type="download_file">http://www.predisi.de/download/jspp.zip</action>
+                <action type="shell_command">unzip jspp.zip -d jspp</action>
+ 		<action type="change_directory">jspp</action>
+                <action type="shell_command">sed -i.bak "1,6d" readme.txt</action>
+                <action type="shell_command">sed "s/import jspp.*/import jspp.*;/" readme.txt > JSPP.java</action>
+ 		<action type="shell_command">javac JSPP.java</action>
+ 		<action type="change_directory">../</action>
+		<action type="shell_command">cp jspp/matrices\(SearchMatrix-objects\)/*   jspp/</action>
+                <action type="make_directory">$INSTALL_DIR/jspp/</action>
+                <action type="move_directory_files">
+                    <source_directory>jspp/</source_directory>
+                    <destination_directory>$INSTALL_DIR/jspp/</destination_directory>
+
+                </action>
+                <action type="set_environment">
+                    <environment_variable name="JSPP_TOOLS_DIR" action="set_to">$INSTALL_DIR/jspp/</environment_variable>
+                    <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/jspp/</environment_variable>
+                </action>
+            </actions>
+        </install>
+        <readme>
+
+        </readme>
+    </package>
+</tool_dependency>

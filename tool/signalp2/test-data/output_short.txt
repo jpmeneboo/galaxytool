@@ -1,0 +1,3 @@
+# SignalP-NN gram+ predictions                                 	# SignalP-HMM gram+ predictions
+# name       Cmax  pos ?  Ymax  pos ?  Smax  pos ?  Smean ?	# name      !  Cmax  pos ?  Sprob ?
+sp|P05067|A           0.457  27 Y  0.434  18 Y  0.988   9 Y  0.871 Y	sp|P05067|A4_HUMAN  S  0.167  18 N  0.556 Y  
