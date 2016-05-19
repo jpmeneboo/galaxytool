@@ -1,0 +1,7 @@
+categories: 
+   - Sequence Analysis
+description: predicts Twin-arginine signal in Gram negative bacteria
+homepage_url: http://www.cbs.dtu.dk/services/TatP/
+name: tatp
+owner: jpmen
+remote_repository_url: https://github.com/jpmeneboo/galaxytool/tree/master/tool/tatp/ 

@@ -1,0 +1,68 @@
+<tool id="tatp" name="tatp" version="0.1.0">
+    <description>predicts Twin-arginine signal in Gram negative bacteria</description>
+    <requirements>
+        <requirement type="package">tatp</requirement>
+    </requirements>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command><![CDATA[
+        tatp  
+	  -trunc $trunc
+
+          -f $format
+
+	  #if $expr
+          	-regex $expr
+	  #end if 
+
+          $input_fasta > $output_fasta    
+      
+        
+	
+    ]]></command>
+    <inputs>
+        <param type="data" name="input_fasta" format="fasta" label="Input fasta" />        
+	<param name='format' type="select" display="radio" label="Output format">
+            <option value="short" selected="true">short</option>
+            <option value="full">full</option>
+	    <option value="summary">summary</option>
+	 </param>
+
+	<param name="trunc" type="integer" label="Truncate each sequence to max"  value="70">
+		<validator type="in_range" min="0" max="100" message="Truncation value should be at most 100. Use zero for no truncation but never if the sequence is most of 100 aa."/>
+	</param>
+	<param name="expr" type="text"  label="Enter a regular expression(Optional)" optional="True"/>
+    </inputs>
+    <outputs>
+        <data name="output_fasta" format="txt" />
+    </outputs>
+
+
+    <tests>
+        <test>
+            <param name="input_fasta" value="test.fasta"/>
+            <param name="format" value="short"/>
+            <param name="trunc" value="70"/>
+            <output name="output" file="output_short.txt" />
+        </test>
+        <test>
+            <param name="input_fasta" value="test.fasta"/>
+            <param name="format" value="full"/>
+            <param name="trunc" value="100"/>
+            <output name="output" file="output_long.txt" />
+        </test>
+    </tests>
+
+    <help><![CDATA[
+**What it does**
+
+TatP 1.0 predicts the presence and location of Twin-arginine signal peptide cleavage sites in bacteria. The method incorporates a prediction of cleavage sites and a signal peptide/non-signal peptide prediction based on a combination of two artificial neural networks. A postfiltering of the output based on regular expressions is possible. 
+
+For more information, check the `user manual <http://www.cbs.dtu.dk/services/TatP/instructions.php>`_.
+    ]]></help>
+
+    <citations>
+        <citation type="doi">10.1186/1471-2105-6-167</citation>
+    </citations>
+</tool>

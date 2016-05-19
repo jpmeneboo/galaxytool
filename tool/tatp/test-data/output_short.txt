@@ -1,0 +1,9 @@
+>sp|P05067|A4_HUMAN    length = 70
+# Measure  Position  Value  Cutoff  Tat signal peptide?
+  max. C    18       0.318   0.51   NO
+  max. Y    38       0.088   0.35   NO
+  max. S    30       0.168   0.75   NO
+  mean S     1-37    0.051   0.30   NO
+  max. D     1-37    0.070   0.36   NO
+# Used regex: RR.[FGAVML][LITMVF]
+//
