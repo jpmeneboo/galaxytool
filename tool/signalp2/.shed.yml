@@ -4,4 +4,4 @@ description: Predicts the presence and location of signal peptide cleavage sites
 homepage_url: http://www.cbs.dtu.dk/cgi-bin/sw_request?signalp+2.0
 name: SignalP2
 owner: jpmen
-remote_repository_url: 
+remote_repository_url: https://github.com/jpmeneboo/galaxytool/tree/master/tool/signalp2/
