@@ -4,4 +4,4 @@ description: Predicts the presence and location of signal peptide cleavage sites
 homepage_url: http://www.predisi.de/home.html
 name: predisi
 owner: jpmen
-remote_repository_url: 
+remote_repository_url: https://github.com/jpmeneboo/galaxytool/tree/master/tool/predisi/
