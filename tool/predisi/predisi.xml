@@ -37,5 +37,7 @@ PrediSi (PREDIction of SIgnal peptides) is a software tool for predicting signal
 
 For more information, check the `user manual <http://www.predisi.de/home.html>`_.
     ]]></help>
-
+    <citations>
+        <citation type="doi">10.1093/nar/gkh378</citation>
+    </citations>
 </tool>
