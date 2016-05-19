@@ -1,5 +1,5 @@
 categories: 
-  - Proteine Analysis
+  - Sequence Analysis
 description: Predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms
 homepage_url: http://www.predisi.de/home.html
 name: predisi
